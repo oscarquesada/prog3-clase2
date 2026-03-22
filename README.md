@@ -1,0 +1,5 @@
+# Bitácora de la Clase 2
+
+1. **Hecho:** Logré implementar un router manual en `index.php`. El sistema lee correctamente la URI, procesa el método GET, y el endpoint `/health` ya responde con un JSON válido mostrando la hora y versión de PHP.
+2. **Falta:** Falta refactorizar el código para sacar toda esta lógica del `index.php` y mudarla a su propio controlador/clase dentro de `src/Router.php`.
+3. **Bloqueo:** Al principio tuve problemas con el `.htaccess` porque el código que estaba en la guía estaba pensado para ir en la carpeta raíz (root), pero la consigna pedía guardarlo dentro de `public/`. Intentamos solucionarlo temporalmente usando dos archivos `.htaccess`, pero para seguir la guía al pie de la letra, terminamos dejando un solo archivo dentro de `public/` con el código de ruteo corregido para esa carpeta. También me generó confusión por qué la URL siempre nos mostraba la palabra `/public` en el medio, pero investigando entendí que es por cómo XAMPP maneja las carpetas de forma local, y que en un servidor real (producción) eso se oculta configurando el Document Root. 
