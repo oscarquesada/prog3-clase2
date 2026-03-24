@@ -1,4 +1,6 @@
 RewriteEngine On
+RewriteBase /prog3-clase2/public/
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
