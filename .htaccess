@@ -1,9 +1,0 @@
-RewriteEngine On
-RewriteBase /prog3-clase2/
-
-RewriteRule ^$ public/ [L,R=302]
-RewriteRule ^public/ - [L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+)$ public/index.php [QSA,L]
