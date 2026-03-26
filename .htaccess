@@ -1,0 +1,24 @@
+# Activa el motor de reescritura de URLs de Apache
+RewriteEngine On
+
+# Le dice a Apache que la base de este proyecto es /prog3-clase2/
+# Todos los paths relativos en las reglas se calculan desde acá
+RewriteBase /prog3-clase2/
+
+# Si la URL es exactamente la raíz (localhost/prog3-clase2/),
+# redirigir al navegador hacia public/ con redirección 302 (temporal)
+RewriteRule ^$ public/ [L,R=302]
+
+# Si la URL ya empieza con public/, no hacer nada y parar.
+# Evita loops infinitos donde public/ redirige a public/public/...
+RewriteRule ^public/ - [L]
+
+# Las dos condiciones siguientes se evalúan juntas:
+# Si lo que se pidió NO es un archivo real que existe en disco...
+RewriteCond %{REQUEST_FILENAME} !-f
+# ...Y tampoco es una carpeta real que existe en disco...
+RewriteCond %{REQUEST_FILENAME} !-d
+# ...entonces mandar la petición a public/index.php que es el punto de entrada
+# QSA = conservar parámetros ?clave=valor si los hay
+# L = esta es la última regla, no seguir procesando
+RewriteRule ^(.+)$ public/index.php [QSA,L]
